@@ -1,4 +1,6 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'transpiled', 'index.js'), // caminho do arquivo inicial da aplicação (que vai empacotar os modulos voltados para aplicação web) 
@@ -6,6 +8,13 @@ module.exports = {
 
   output: { // onde o arquivo final vai ser gerado
     path: path.resolve(__dirname, 'build'), 
-    filename: 'bundle.js',
+    filename: 'bundle[hash].js',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
+
+    new CleanWebpackPlugin(),
+  ],
 };
