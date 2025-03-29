@@ -33,6 +33,12 @@ function App() {
       ]);
     }, 2000); 
   }
+
+  function handleRemovePost(postId) {
+    setPosts((prevState) => (
+      prevState.filter(post => post.id !== postId)
+    ));
+  }
   
   return (  // <>  short syntax para React.Fragment. Componente que não renderiza nada, mas serve para agrupar elementos
   <> 
@@ -50,7 +56,9 @@ function App() {
       <Post // para cada post, renderiza um componente Post
         key={post.id} // key é obrigatório para listas, para o React identificar cada elemento (title foi escolhido por cada title ser único)
         likes={post.likes}
+        onRemove={handleRemovePost} 
         post={{
+          id: post.id,
           title: post.title,
           subtitle: post.subtitle,
         }} 

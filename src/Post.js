@@ -5,7 +5,11 @@ export default function Post(props) {
   return (
     <>
       <article>
-        <strong>{props.post.title}</strong> <br />
+        <strong>{props.post.title}</strong>
+        <button onClick={() => props.onRemove(props.post.id)}>
+          Remover
+        </button>
+        <br />
         <small>{props.post.subtitle}</small>
         <br />
         Media: {props.likes / 2}
