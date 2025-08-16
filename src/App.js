@@ -9,10 +9,10 @@ function App() {
   
   // O useState resolve esse problema ao fornecer uma forma explícita de gerenciar o estado e notificar o React quando algo muda, permitindo que ele atualize a interface de forma eficiente.
 
-  const [posts, setPosts] = useState([ // colocar entre '[ ]' para se referir a primeira posição do array (propriedade js)
-    { id: Math.random(), title: 'Title#01', subtitle: 'Sub#01' , likes: 20 },
-    { id: Math.random(), title: 'Title#02', subtitle: 'Sub#02' , likes: 10 },
-    { id: Math.random(), title: 'Title#03', subtitle: 'Sub#03' , likes: 50 },
+  const [posts, setPosts] = useState([ // colocar entre '[ ]' para se referir a primeira posição do array (propriedade js)(se n colocar, o .map nao saberia se ia ser a primeira ou segunda posição do array)
+    { id: Math.random(), title: 'Title#01', subtitle: 'Sub#01' , likes: 20, read: false },
+    { id: Math.random(), title: 'Title#02', subtitle: 'Sub#02' , likes: 10, read: true },
+    { id: Math.random(), title: 'Title#03', subtitle: 'Sub#03' , likes: 50, read: false },
   ]); // [state, setState]: estado atual e função para atualizar o estado
 
   console.log({ posts });
@@ -54,14 +54,10 @@ function App() {
     {/* renderizando lista */}
     {posts.map(post => (    
       <Post // para cada post, renderiza um componente Post
-        key={post.id} // key é obrigatório para listas, para o React identificar cada elemento (title foi escolhido por cada title ser único)
+        key={post.id} // key é obrigatório para listas, para o React identificar cada elemento (id foi escolhido por cada id ser único)
         likes={post.likes}
-        onRemove={handleRemovePost} 
-        post={{
-          id: post.id,
-          title: post.title,
-          subtitle: post.subtitle,
-        }} 
+        onRemove={handleRemovePost} // passando a função de remover post para o componente Post (de pai para filho)
+        post={post} 
       />
     ))}
   </>  
