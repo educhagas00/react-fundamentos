@@ -2,7 +2,7 @@ import React, { use, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-import { ThemeContext } from './App'; 
+import { ThemeContext } from './ThemeContext'; 
 
 export default function Header(props) { // desestruturação de props 
 
