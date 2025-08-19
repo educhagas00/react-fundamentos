@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Post from './Post';
 import Header from './Header';
+
+export const ThemeContext = createContext(); // criando um contexto para o tema e com valor inicial 'dark'
+// para usar o context, preciso pensar quem vai usar a informação. nesse caso, tanto o Header quanto o Post tem buttons, então deve-se envolver ambos com o ThemeContext.provider
 
 function App() {
 
@@ -9,6 +12,8 @@ function App() {
   
   // O useState resolve esse problema ao fornecer uma forma explícita de gerenciar o estado e notificar o React quando algo muda, permitindo que ele atualize a interface de forma eficiente.
 
+  const [theme, setTheme] = useState('dark');
+ 
   const [posts, setPosts] = useState([ // colocar entre '[ ]' para se referir a primeira posição do array (propriedade js)(se n colocar, o .map nao saberia se ia ser a primeira ou segunda posição do array)
     { id: Math.random(), title: 'Title#01', subtitle: 'Sub#01' , likes: 20, read: false },
     { id: Math.random(), title: 'Title#02', subtitle: 'Sub#02' , likes: 10, read: true },
@@ -34,6 +39,14 @@ function App() {
     }, 2000); 
   }
 
+  function handleToggleTheme() {
+    setTheme((prevState) => (
+      prevState === 'dark' 
+        ? 'light'
+        : 'dark'
+    ));
+  }
+
   function handleRemovePost(postId) {
     setPosts((prevState) => (
       prevState.filter(post => post.id !== postId)
@@ -41,7 +54,12 @@ function App() {
   }
   
   return (  // <>  short syntax para React.Fragment. Componente que não renderiza nada, mas serve para agrupar elementos
-  <> 
+  <ThemeContext.Provider 
+    value = {{ 
+      theme, 
+      onToggleTheme: handleToggleTheme, // passando a função para o contexto 
+    }}
+  > 
     <Header title="Dudu's Blog">
       <h2>
         Posts da Semana
@@ -60,7 +78,7 @@ function App() {
         post={post} 
       />
     ))}
-  </>  
+  </ThemeContext.Provider>  
   ); // componentes irmaos precisam estar dentro de um componente pai (nesse caso, o fragment)
 }
 
