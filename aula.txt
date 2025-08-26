@@ -1,0 +1,17 @@
+react tudo ta no cliente!!
+
+como vc sabe se o cara tem permissao no cliente?
+
+levar maquina de estado para o cliente 
+
+virtual dom
+
+dto?
+
+entendi NADA da configuração do braida (ele passa o resto?)
+
+quando usar ou nao contexto
+
+preComputeURL??????
+
+primeira missao^: salvar no banco os arquivos

@@ -26,6 +26,18 @@ module.exports = {
         exclude: /node_modules/, // não quero que ele pegue os arquivos da pasta node_modules
         use: 'babel-loader', // qual loader vai ser usado
       },
+      {
+        test: /\.module\.css$/, //testando se o arquivo termina com .module.css (css modules)
+        use: [
+          'style-loader', // usar o style-loader para injetar css no DOM e o css-loader para cuidar das importações de css (ordem importa)
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true, // ativar o css modules
+            },
+          },
+        ], 
+      }
     ],
   },
   devServer: {

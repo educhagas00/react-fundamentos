@@ -2,6 +2,8 @@ import React, { use, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
+import * as styles from './Header.module.css'; // importando o css do Header. quando se usa css modules, o nome do arquivo deve ser nomeado
+
 import { ThemeContext } from './ThemeContext'; 
 
 export default function Header(props) { // desestruturação de props 
@@ -10,7 +12,7 @@ export default function Header(props) { // desestruturação de props
 
   return (
     <>
-      <h1>{props.title}</h1>
+      <h1 className={styles.title}>{props.title}</h1>
       <Button onClick={onToggleTheme}>
         Mudar Tema
       </Button>

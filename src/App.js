@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+
 import Post from './Post';
 import Header from './Header';
-
 import { ThemeProvider } from './ThemeContext'; 
+
+import * as styles from './App.module.css'; 
 
 
 function App() {
@@ -46,7 +48,7 @@ function App() {
   return (  // <>  short syntax para React.Fragment. Componente que não renderiza nada, mas serve para agrupar elementos
   <ThemeProvider> 
     <Header title="Dudu's Blog">
-      <h2>
+      <h2 className={styles.title}>
         Posts da Semana
         <button onClick={handleRefresh}>Atualizar</button>
         </h2>
