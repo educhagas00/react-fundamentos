@@ -27,7 +27,7 @@ module.exports = {
         use: 'babel-loader', // qual loader vai ser usado
       },
       {
-        test: /\.module\.css$/, //testando se o arquivo termina com .module.css (css modules)
+        test: /\.module\.scss$/, //testando se o arquivo termina com .module.css (css modules)
         use: [
           'style-loader', // usar o style-loader para injetar css no DOM e o css-loader para cuidar das importações de css (ordem importa)
           {
@@ -36,6 +36,7 @@ module.exports = {
               modules: true, // ativar o css modules
             },
           },
+          'sass-loader',
         ], 
       }
     ],

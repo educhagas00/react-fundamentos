@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './index.module.css'; // importando o css global
+import './index.module.scss'; // importando o css global
 
 import App from './App';
 
