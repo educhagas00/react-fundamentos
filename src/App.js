@@ -15,9 +15,9 @@ function App() {
   // O useState resolve esse problema ao fornecer uma forma explícita de gerenciar o estado e notificar o React quando algo muda, permitindo que ele atualize a interface de forma eficiente.
  
   const [posts, setPosts] = useState([ // colocar entre '[ ]' para se referir a primeira posição do array (propriedade js)(se n colocar, o .map nao saberia se ia ser a primeira ou segunda posição do array)
-    { id: Math.random(), title: 'Title#01', subtitle: 'Sub#01' , likes: 20, read: false },
-    { id: Math.random(), title: 'Title#02', subtitle: 'Sub#02' , likes: 10, read: true },
-    { id: Math.random(), title: 'Title#03', subtitle: 'Sub#03' , likes: 50, read: false },
+    { id: Math.random(), title: 'Title#01', subtitle: 'Sub#01' , likes: 20, read: false, removed: true },
+    { id: Math.random(), title: 'Title#02', subtitle: 'Sub#02' , likes: 10, read: true, removed: false },
+    { id: Math.random(), title: 'Title#03', subtitle: 'Sub#03' , likes: 50, read: false, removed: false },
   ]); // [state, setState]: estado atual e função para atualizar o estado
 
   console.log({ posts });
@@ -40,8 +40,10 @@ function App() {
   }
 
   function handleRemovePost(postId) {
-    setPosts((prevState) => (
-      prevState.filter(post => post.id !== postId)
+    setPosts((prevState) => prevState.map(
+      post => post.id === postId 
+        ? { ...post, removed: true } // se o id do post for igual ao id do post que quero remover, retorna o post com a propriedade removed como true
+        : post // se n for igual, retorna o post original
     ));
   }
   
