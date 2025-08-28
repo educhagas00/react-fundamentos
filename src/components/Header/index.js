@@ -1,10 +1,10 @@
 import React, { use, useContext } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Button from '../Button';
 
 import * as styles from './Header.module.scss'; // importando o css do Header. quando se usa css modules, o nome do arquivo deve ser nomeado
 
-import { ThemeContext } from './ThemeContext'; 
+import { ThemeContext } from '../../context/ThemeContext'; 
 
 export default function Header(props) { // desestruturação de props 
 

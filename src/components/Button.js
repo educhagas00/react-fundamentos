@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from './ThemeContext'; // importando o contexto do tema
+import { ThemeContext } from '../context/ThemeContext'; // importando o contexto do tema
 
 export default function Button(props) { 
 

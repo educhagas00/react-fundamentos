@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PostHeader from './PostHeader';
 
+import PostHeader from './PostHeader';
 import * as styles from './Post.module.scss'; 
 
 export default function Post(props) {
