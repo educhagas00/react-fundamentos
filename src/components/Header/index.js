@@ -1,13 +1,9 @@
 import React, { use, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
-import styled from 'styled-components';
 
 import { ThemeContext } from '../../context/ThemeContext'; 
-
-const Title = styled.h1`
-  color: #647Bf3;
-`;
+import Title from '../Title';
 
 export default function Header(props) { // desestruturação de props 
 
